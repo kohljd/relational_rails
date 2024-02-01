@@ -5,8 +5,9 @@ require 'rails_helper'
 # (data from each column that is on the child table)
 
 RSpec.describe "Players Index Page", type: :feature do
-  let!(:player1) {Player.create!(name: "Jenna", game_master: true, character_name: "Charlotte", sessions_missed: 0)}
-  let!(:player2) {Player.create!(name: "Amy", game_master: false, character_name: "Francis", sessions_missed: 5)}
+  let!(:campaign1) {DndCampaign.create!(name: "Ravenloft", setting: "Forgotten Realm", active_campaign: true, sessions: 15)}
+  let!(:player1) {campaign1.players.create!(name: "Jenna", game_master: true, character_name: "NPCs", sessions_missed: 0)}
+  let!(:player2) {campaign1.players.create!(name: "Amy", game_master: false, character_name: "Francis", sessions_missed: 5)}
 
   describe "index page" do
     before(:each) do
@@ -14,6 +15,7 @@ RSpec.describe "Players Index Page", type: :feature do
     end
     
     it "displays all player names" do
+      save_and_open_page
       expect(page).to have_content(player1.name)
       expect(page).to have_content(player2.name)
     end
