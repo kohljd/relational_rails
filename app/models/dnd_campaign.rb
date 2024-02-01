@@ -1,0 +1,3 @@
+class DndCampaign < ApplicationRecord
+
+end
