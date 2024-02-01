@@ -15,7 +15,6 @@ RSpec.describe "Players Index Page", type: :feature do
     end
     
     it "displays all player names" do
-      save_and_open_page
       expect(page).to have_content(player1.name)
       expect(page).to have_content(player2.name)
     end
