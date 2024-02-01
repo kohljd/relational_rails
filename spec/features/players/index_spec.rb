@@ -10,7 +10,7 @@ RSpec.describe "Players Index Page", type: :feature do
 
   describe "index page" do
     before(:each) do
-      visit "/dnd_campaigns"
+      visit "/players"
     end
     
     it "displays all player names" do
