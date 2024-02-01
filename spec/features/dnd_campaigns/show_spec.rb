@@ -14,6 +14,7 @@ RSpec.describe "DnD Campaigns Show Page" do
     end
 
     it "displays the campaign name" do
+      save_and_open_page
       expect(page).to have_content(campaign1.name)
       expect(page).to_not have_content(campaign2.name)
     end

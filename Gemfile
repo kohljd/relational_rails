@@ -51,7 +51,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "simplecov"
   gem "capybara"
-  gem "launchy"
+  gem "launchy" #save_and_open_page
   gem "orderly"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
