@@ -17,6 +17,7 @@ RSpec.describe "DnD Campaign's Players Index" do
     end
 
     it "displays the campaign's name" do
+      save_and_open_page
       expect(page).to have_content(campaign1.name)
       expect(page).to_not have_content(campaign2.name)
     end
@@ -29,17 +30,16 @@ RSpec.describe "DnD Campaign's Players Index" do
 
     describe "each campaign players' attributes" do
       it "displays if each comapign players is the gm" do
-        within "#player_#{player1.id}" do
+        # match(:first, :css, "div")#"#player_#{player1.id}" do
+        # match(:first within(:css, "div")) do 
+        within all(:css, "p")[0] do
           expect(page).to have_content(player1.game_master)
         end
 
-        withing "#player_#{player2.id}" do
+        within all(:css, "p")[3] do
           expect(page).to have_content(player2.game_master)
         end
       end
-
-      # for ID, you'd use 'id="an_id_name" with "#songs"
-      # for Class, you'd use 'class="a_class_name" with ".songs"
       
       it "displays each comapign players' character name" do
         expect(page).to have_content(player1.character_name)
