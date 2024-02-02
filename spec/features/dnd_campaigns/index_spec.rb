@@ -11,7 +11,7 @@ RSpec.describe "DnD Campaigns Index Page", type: :feature do
   describe "index page" do
     it 'displays all dnd campaign names' do
       visit "/dnd_campaigns"
-
+      
       expect(page).to have_content(campaign1.name)
       expect(page).to have_content(campaign2.name)
     end
