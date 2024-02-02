@@ -30,8 +30,7 @@ RSpec.describe "DnD Campaign's Players Index" do
 
     describe "each campaign players' attributes" do
       it "displays if each comapign players is the gm" do
-        # match(:first, :css, "div")#"#player_#{player1.id}" do
-        # match(:first within(:css, "div")) do 
+        #currently counting <p>'s, look at changing later
         within all(:css, "p")[0] do
           expect(page).to have_content(player1.game_master)
         end
