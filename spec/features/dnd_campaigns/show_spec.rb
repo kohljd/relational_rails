@@ -39,8 +39,14 @@ RSpec.describe "DnD Campaigns Show Page" do
       expect(page).to_not have_content(campaign2.player_count)
     end
 
-    it "displays link to players index" do
-      expect(page).to have_link("Players List")
+    describe "displays links to" do
+      it "players index" do
+        expect(page).to have_link("Players List")
+      end
+
+      it "dnd campaigns index" do
+        expect(page).to have_link("DnD Campaigns List")
+      end
     end
   end
 end
