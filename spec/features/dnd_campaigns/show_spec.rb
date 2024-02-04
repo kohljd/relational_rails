@@ -11,30 +11,36 @@ RSpec.describe "DnD Campaigns Show Page" do
       visit "/dnd_campaigns/#{campaign1.id}"
     end
 
-    it "displays the campaign name" do
-      save_and_open_page
-      expect(page).to have_content(campaign1.name)
-      expect(page).to_not have_content(campaign2.name)
-    end
+    describe "displays campaign's attributes" do
+      it "name" do
+        save_and_open_page
+        expect(page).to have_content(campaign1.name)
+        expect(page).to_not have_content(campaign2.name)
+      end
 
-    it "displays the campaign's setting" do
-      expect(page).to have_content(campaign1.setting)
-      expect(page).to_not have_content(campaign2.setting)
-    end
+      it "setting" do
+        expect(page).to have_content(campaign1.setting)
+        expect(page).to_not have_content(campaign2.setting)
+      end
 
-    it "displays if campaign's active" do
-      expect(page).to have_content(campaign1.active_campaign)
-      expect(page).to_not have_content(campaign2.active_campaign)
-    end
+      it "if active" do
+        expect(page).to have_content(campaign1.active_campaign)
+        expect(page).to_not have_content(campaign2.active_campaign)
+      end
 
-    it "displays campaign's session count" do
-      expect(page).to have_content(campaign1.sessions)
-      expect(page).to_not have_content(campaign2.sessions)
+      it "session count" do
+        expect(page).to have_content(campaign1.sessions)
+        expect(page).to_not have_content(campaign2.sessions)
+      end
     end
 
     it "displays campaign's players count" do
       expect(page).to have_content(campaign1.player_count)
       expect(page).to_not have_content(campaign2.player_count)
+    end
+
+    it "displays link to players index" do
+      expect(page).to have_link("Players List")
     end
   end
 end
