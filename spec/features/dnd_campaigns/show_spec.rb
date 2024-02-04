@@ -39,13 +39,26 @@ RSpec.describe "DnD Campaigns Show Page" do
       expect(page).to_not have_content(campaign2.player_count)
     end
 
-    describe "displays links to" do
+    describe "displays links that go to" do
       it "players index" do
         expect(page).to have_link("Players List")
+
+        click_link "Players List"
+        expect(current_path).to eq("/players")
       end
 
       it "dnd campaigns index" do
         expect(page).to have_link("DnD Campaigns List")
+
+        click_link "DnD Campaigns List"
+        expect(current_path).to eq("/dnd_campaigns")
+      end
+
+      it "dnd campaign's players index" do
+        expect(page).to have_link("#{campaign1.name}'s Player List")
+
+        click_link "#{campaign1.name}'s Player List"
+        expect(current_path).to eq("/dnd_campaigns/:id/players")
       end
     end
   end
