@@ -3,3 +3,5 @@
 <p><b>Sessions:</b> <%= @dnd_campaign.sessions%> </p>
 <p><b>Campaign Active:</b> <%= @dnd_campaign.active_campaign%> </p>
 <p><b>Player Count:</b> <%= @dnd_campaign.player_count%> </p>
+
+<%= link_to "#{@dnd_campaign.name}'s Player List", "/dnd_campaigns/:id/players" %>
