@@ -10,6 +10,7 @@ RSpec.describe "DnD Campaigns Index Page", type: :feature do
     end
 
     it "displays all dnd campaign names" do
+      save_and_open_page
       expect(page).to have_content(campaign1.name)
       expect(page).to have_content(campaign2.name)
     end
@@ -26,10 +27,16 @@ RSpec.describe "DnD Campaigns Index Page", type: :feature do
     describe "displays links to" do
       it "players index" do
         expect(page).to have_link("Players List")
+
+        click_link "Players List"
+        expect(current_path).to eq("/players")
       end
 
       it "dnd campaigns index" do
         expect(page).to have_link("DnD Campaigns List")
+
+        click_link "DnD Campaigns List"
+        expect(current_path).to eq("/dnd_campaigns")
       end
     end
   end
