@@ -3,6 +3,8 @@ class DndCampaignsController < ApplicationController
     @dnd_campaigns = DndCampaign.order_by_newest
   end
 
+  def new; end
+
   def show
     @dnd_campaign = DndCampaign.find(params[:id])
   end
