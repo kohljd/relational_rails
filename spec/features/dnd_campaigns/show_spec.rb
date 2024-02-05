@@ -60,6 +60,13 @@ RSpec.describe "DnD Campaigns Show Page" do
         click_link "#{campaign1.name}'s Player List"
         expect(current_path).to eq("/dnd_campaigns/:id/players")
       end
+
+      it "dnd campaign's edit" do
+        expect(page).to have_link("Update #{campaign1.name}")
+
+        click_link
+        expect(current_path).to eq("/dnd_campaigns/:id/edit")
+      end
     end
   end
 end
