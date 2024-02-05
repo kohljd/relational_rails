@@ -38,11 +38,11 @@ RSpec.describe "DnD Campaigns Index Page", type: :feature do
         click_link "DnD Campaigns List"
         expect(current_path).to eq("/dnd_campaigns")
       end
-      
+
       it "create new dnd campaign" do
         expect(page).to have_link("Create DnD Campaign")
 
-        click link "Create DnD Campaign"
+        click_link "Create DnD Campaign"
         expect(current_path).to eq("/dnd_campaigns/new")
       end
     end
