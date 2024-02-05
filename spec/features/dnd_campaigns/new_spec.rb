@@ -7,17 +7,18 @@ RSpec.describe "DnD Campaigns New Page" do
     end
 
     it 'displays new dnd campaign form' do
+      save_and_open_page
       expect(page).to have_field("Name")
       expect(page).to have_field("Setting")
-      expect(page).to have_field("Number of Sessions")
-      expect(page).to have_select("Active Campaign", with_options: ["true", "false"])
+      expect(page).to have_field("Number of sessions")
+      expect(page).to have_select("Active campaign", with_options: ["true", "false"])
     end
     
     it "redirects completed form to DnD Campaign Index" do
       fill_in "Name", with: "Abomination Vaults"
       fill_in "Setting", with: "Otari Dungeons"
-      fill_in "Sessions", with: 8 
-      select "true", from: "Active Campaign"
+      fill_in "Number of sessions", with: 8 
+      select "true", from: "Active campaign"
       
       click_button "Create DnD Campaign"
       expect(current_path).to eq("/dnd_campaigns")

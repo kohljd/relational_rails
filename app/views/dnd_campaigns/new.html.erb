@@ -1,0 +1,14 @@
+<br>
+<br>
+<h1>New DnD Campaign Form</h1>
+<%= form_with url: "/dnd_campaigns", method: :post, data: {turbo: false} do |form|%>
+  <%=form.label :name%>
+  <%=form.text_field :name%><br><br>
+  <%=form.label :setting%>
+  <%=form.text_field :setting%><br><br>
+  <%=form.label :number_of_sessions%>
+  <%=form.text_field :number_of_sessions%><br><br>
+  <%=form.label :active_campaign%>
+  <%=form.select(:active_campaign, %w[select true false]) %><br><br>
+  <%=form.submit "Create DnD Campaign"%>
+<%end%>
