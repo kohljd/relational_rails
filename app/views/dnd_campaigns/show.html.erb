@@ -5,3 +5,5 @@
 <p><b>Player Count:</b> <%= @dnd_campaign.player_count%> </p>
 
 <%= link_to "#{@dnd_campaign.name}'s Player List", "/dnd_campaigns/:id/players" %>
+<br><br>
+<%= link_to "Update #{@dnd_campaign.name}'s Campaign Info", "/dnd_campaigns/:id/edit" %>
