@@ -11,7 +11,7 @@ RSpec.describe "DnD Campaigns New Page" do
       expect(page).to have_field("Name")
       expect(page).to have_field("Setting")
       expect(page).to have_field("Sessions")
-      expect(page).to have_select("active_campaign", with_options: ["select", "true", "false"])
+      expect(page).to have_select("Active Campaign", with_options: ["select", "true", "false"])
     end
     
     it "completed form redirects to DnD Campaign Index" do
