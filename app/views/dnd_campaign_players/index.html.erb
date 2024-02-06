@@ -1,13 +1,13 @@
 <h1><%=@dnd_campaign.name%> Players</h1>
 
-<div id="players">
   <%@players.each do |player|%>
+    <div id="player_<%=player.id%>">
     <h2><%=player.name%></h2>
     <p><b>Game Master:</b> <%= player.game_master%></p>
     <p><b>Character Name:</b> <%= player.character_name%></p>
     <p><b>Sessions Missed:</b> <%= player.sessions_missed%> </p>
+    </div>
   <%end%>
-</div>
 
 <%= link_to "Create New Player", "/dnd_campaigns/#{@dnd_campaign.id}/players/new" %>
 

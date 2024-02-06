@@ -26,12 +26,11 @@ RSpec.describe "DnD Campaign's Players Index" do
 
     describe "displays each campaign player's attributes" do
       it "players' gm status" do
-        #currently counting <p>'s, look at changing later
-        within all(:css, "p")[0] do
+        within "#player_#{player1.id}" do
           expect(page).to have_content(player1.game_master)
         end
 
-        within all(:css, "p")[3] do
+        within "#player_#{player2.id}" do
           expect(page).to have_content(player2.game_master)
         end
       end
