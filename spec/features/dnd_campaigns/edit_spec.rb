@@ -1,0 +1,33 @@
+require 'rails_helper'
+
+RSpec.describe "DnD Campaigns Edit Page" do
+  describe "when user visits" do
+    let!(:campaign1) {DndCampaign.create!(name: "Kingmaker", setting: "Stolen Lands", active_campaign: true, sessions: 18)}
+    let!(:player1) {campaign1.players.create!(name: "Jenna", game_master: true, character_name: "NPCs", sessions_missed: 0)}
+    let!(:player2) {campaign1.players.create!(name: "Amy", game_master: false, character_name: "Francis", sessions_missed: 5)}
+  
+    describe "when user visits" do
+      before do
+        visit "/dnd_campaigns/#{campaign1.id}/edit"
+      end
+
+      it 'displays dnd campaign form with current campaign info' do
+        save_and_open_page
+        expect(page.find_field("Name").value).to eq(campaign1.name)
+        expect(page.find_field("Setting").value).to have_field(campaign1.setting)
+        expect(page.find_field("Sessions").value).to have_field(campaign1.sessions)
+        expect(page.find_field("active_campaign").value).to eq(campaign1.active_campaign)
+      end
+      
+      it "updated form redirects to DnD Campaign " do
+        fill_in "Sessions", with: 20
+        select "false", from: "active_campaign"
+        
+        click_button "Submit Changes"
+        expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}")
+        expect(page).to have_content(20)
+        expect(page).to have_content("false")
+      end
+    end
+  end
+end
