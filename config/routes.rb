@@ -22,4 +22,6 @@ Rails.application.routes.draw do
 
   # Parent's Children Routes
   get "/dnd_campaigns/:id/players", to: "dnd_campaign_players#index"
+  get "/dnd_campaigns/:id/players/new", to: "dnd_campaign_players#new"
+  post "/dnd_campaigns/:id/players", to: "dnd_campaign_players#create"
 end

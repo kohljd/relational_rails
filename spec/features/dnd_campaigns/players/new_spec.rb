@@ -5,7 +5,7 @@ RSpec.describe "DnD Campaign's New Player Page" do
     let!(:campaign1) {DndCampaign.create!(name: "Ravenloft", setting: "Forgotten Realm", active_campaign: true, sessions: 15)}
 
     before do
-      visit "/dnd_campaigns/#{@campaign1.id}/new"
+      visit "/dnd_campaigns/#{campaign1.id}/players/new"
     end
 
     it 'displays new player form' do
@@ -22,9 +22,10 @@ RSpec.describe "DnD Campaign's New Player Page" do
       fill_in "Sessions Missed", with: 4
       select "false", from: "Game Master"
       
-      click_button "Create New Player"
+      click_button "Create Player"
       expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}/players")
-      expect(page).to have_content("Velma")
+      save_and_open_page
+      expect(page).to have_content("Samantha")
     end
   end
 end

@@ -68,7 +68,7 @@ RSpec.describe "DnD Campaign's Players Index" do
         expect(page).to have_link("Create New Player")
 
         click_link "Create New Player"
-        expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}/new")
+        expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}/players/new")
       end
     end
   end
