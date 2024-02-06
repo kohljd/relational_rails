@@ -80,10 +80,11 @@ RSpec.describe "DnD Campaign's Players Index" do
       end
 
       it "reloads page to display players alphabetically" do
-        expect(player1.name).to appear_before(player2.neame)
+        expect(player1.name).to appear_before(player2.name)
 
         click_link "Sort Players Alphabetically"
-        expect(player2.name).to appear_before(player1.neame)
+        save_and_open_page
+        expect(player2.name).to appear_before(player1.name)
       end
     end
   end

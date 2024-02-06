@@ -5,6 +5,10 @@ class DndCampaign < ApplicationRecord
     order(created_at: :desc)
   end
 
+  def sort_players_alphabetically
+    self.players.order(:name)
+  end
+
   def player_count
     self.players.count
   end
