@@ -19,6 +19,6 @@ class PlayersController < ApplicationController
 
   private
     def player_params
-      params.require(:player).permit(:name, :character_name, :sessions_missed, :game_master)
+      params.require(:player).permit(:name, :character_name, :sessions_missed, :game_master, :active_player)
     end
 end

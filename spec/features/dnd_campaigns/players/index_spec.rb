@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "DnD Campaign's Players Index" do
   let!(:campaign1) {DndCampaign.create!(name: "Ravenloft", setting: "Forgotten Realm", active_campaign: true, sessions: 15)}
   let!(:campaign2) {DndCampaign.create!(name: "Mighty Nein", setting: "Castles", active_campaign: false, sessions: 152)}
-  let!(:player1) {campaign1.players.create!(name: "Jenna", game_master: true, character_name: "NPCs", sessions_missed: 0)}
-  let!(:player2) {campaign1.players.create!(name: "Amy", game_master: true, character_name: "Francis", sessions_missed: 5)}
-  let!(:player3) {campaign2.players.create!(name: "Sean", game_master: false, character_name: "Alfred", sessions_missed: 8)}
+  let!(:player1) {campaign1.players.create!(name: "Jenna", game_master: true, character_name: "NPCs", sessions_missed: 0, active_player: true)}
+  let!(:player2) {campaign1.players.create!(name: "Amy", game_master: false, character_name: "Francis", sessions_missed: 5, active_player: true)}
+  let!(:player3) {campaign2.players.create!(name: "Sean", game_master: false, character_name: "Alfred", sessions_missed: 8, active_player: true)}
 
   describe "when user visits" do
     before (:each) do
@@ -45,6 +45,16 @@ RSpec.describe "DnD Campaign's Players Index" do
         expect(page).to have_content(player1.sessions_missed)
         expect(page).to have_content(player2.sessions_missed)
         expect(page).to_not have_content(player3.sessions_missed)
+      end
+      
+      it "players' gm status" do
+        within "#player_#{player1.id}" do
+          expect(page).to have_content(player1.active_player)
+        end
+
+        within "#player_#{player2.id}" do
+          expect(page).to have_content(player2.active_player)
+        end
       end
     end
 

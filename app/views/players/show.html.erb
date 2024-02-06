@@ -2,5 +2,6 @@
 <p><b>Game Master:</b> <%= @player.game_master%></p>
 <p><b>Character Name:</b> <%= @player.character_name%></p>
 <p><b>Sessions Missed:</b> <%= @player.sessions_missed%> </p>
+<p><b>Active Player:</b> <%= @player.active_player%> </p>
 
 <%= link_to "Update #{@player.name}'s Info", "/players/#{@player.id}/edit" %>

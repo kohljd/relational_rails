@@ -14,6 +14,7 @@ RSpec.describe "DnD Campaign's New Player Page" do
       expect(page).to have_field("Character Name")
       expect(page).to have_field("Sessions Missed")
       expect(page).to have_select("Game Master", with_options: ["select", "true", "false"])
+      expect(page).to have_select("Active Player", with_options: ["select", "true", "false"])
     end
     
     it "completed form redirects to DnD Campaign's Players Index" do
@@ -21,6 +22,7 @@ RSpec.describe "DnD Campaign's New Player Page" do
       fill_in "Character Name", with: "Daphne"
       fill_in "Sessions Missed", with: 4
       select "false", from: "Game Master"
+      select "true", from: "Active Player"
       
       click_button "Create Player"
       expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}/players")

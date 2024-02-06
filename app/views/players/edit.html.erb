@@ -10,5 +10,7 @@
   <%=form.number_field :sessions_missed%><br><br>
   <b><%=form.label :game_master, "Game Master"%>:</b>
   <%=form.select(:game_master, %w[select true false])%><br><br>
+  <b><%=form.label :active_player, "Active Player"%>:</b>
+  <%=form.select(:active_player, %w[select true false])%><br><br>
   <%=form.submit "Submit Changes"%>
 <%end%>
