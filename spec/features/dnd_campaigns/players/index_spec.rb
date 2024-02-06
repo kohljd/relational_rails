@@ -4,7 +4,7 @@ RSpec.describe "DnD Campaign's Players Index" do
   let!(:campaign1) {DndCampaign.create!(name: "Ravenloft", setting: "Forgotten Realm", active_campaign: true, sessions: 15)}
   let!(:campaign2) {DndCampaign.create!(name: "Mighty Nein", setting: "Castles", active_campaign: false, sessions: 152)}
   let!(:player1) {campaign1.players.create!(name: "Jenna", game_master: true, character_name: "NPCs", sessions_missed: 0)}
-  let!(:player2) {campaign1.players.create!(name: "Amy", game_master: false, character_name: "Francis", sessions_missed: 5)}
+  let!(:player2) {campaign1.players.create!(name: "Amy", game_master: true, character_name: "Francis", sessions_missed: 5)}
   let!(:player3) {campaign2.players.create!(name: "Sean", game_master: false, character_name: "Alfred", sessions_missed: 8)}
 
   describe "when user visits" do
@@ -68,6 +68,22 @@ RSpec.describe "DnD Campaign's Players Index" do
 
         click_link "Create New Player"
         expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}/players/new")
+      end
+    end
+
+    describe "can sort players alphabetically" do
+      it "displays link to alphabetically sort" do
+        expect(page).to have_link("Sort Players Alphabetically")
+
+        click_link "Sort Players Alphabetically"
+        expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}/players")
+      end
+
+      it "reloads page to display players alphabetically" do
+        expect(player1.name).to appear_before(player2.neame)
+
+        click_link "Sort Players Alphabetically"
+        expect(player2.name).to appear_before(player1.neame)
       end
     end
   end

@@ -13,5 +13,9 @@ RSpec.describe DndCampaign, type: :model do
     it "counts players" do
       expect(campaign1.player_count).to eq(2)
     end
+
+    it "sorts players alphabetically" do
+      expect(campaign1.sort_players_alphabetically).to eq([player2, player1])
+    end
   end
 end
