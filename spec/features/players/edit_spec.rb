@@ -23,9 +23,9 @@ RSpec.describe "Player's Edit Page" do
         select "false", from: "Game Master"
         
         click_button "Submit Changes"
-        expect(current_path).to eq("/players/#{campaign1.id}")
+        expect(current_path).to eq("/players/#{player1.id}")
         save_and_open_page
-        expect(page).to have_content(Velma)
+        expect(page).to have_content("Velma")
         expect(page).to have_content("false")
       end
     end

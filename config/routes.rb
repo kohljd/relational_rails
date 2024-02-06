@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   # Child Routes
   get "/players", to: "players#index"
   get "/players/:id", to: "players#show"
+  get "/players/:id/edit", to: "players#edit"
+  patch "/players/:id", to: "players#update"
 
   # Parent's Children Routes
   get "/dnd_campaigns/:id/players", to: "dnd_campaign_players#index"

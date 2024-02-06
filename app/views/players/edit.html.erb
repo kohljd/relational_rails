@@ -1,0 +1,14 @@
+<br>
+<br>
+<h1>Update: <%=@player.name%></h1>
+<%= form_with(model: @player, url: "/players/#{@player.id}", method: :patch, data: {turbo: false}, local: true) do |form|%>
+  <b><%=form.label :name%>:</b>
+  <%=form.text_field :name%><br><br>
+  <b><%=form.label :character_name, "Character Name"%>:</b>
+  <%=form.text_field :character_name%><br><br>
+  <b><%=form.label :sessions_missed, "Sessions Missed"%>:</b>
+  <%=form.number_field :sessions_missed%><br><br>
+  <b><%=form.label :game_master, "Game Master"%>:</b>
+  <%=form.select(:game_master, %w[select true false])%><br><br>
+  <%=form.submit "Submit Changes"%>
+<%end%>
