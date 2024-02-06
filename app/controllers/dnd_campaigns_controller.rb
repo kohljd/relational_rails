@@ -6,7 +6,7 @@ class DndCampaignsController < ApplicationController
   def new; end
 
   def create
-    DndCampaign.create(dnd_campaign_params)
+    dnd_campaign = DndCampaign.create(dnd_campaign_params)
     redirect_to "/dnd_campaigns"
   end
 
@@ -14,8 +14,18 @@ class DndCampaignsController < ApplicationController
     @dnd_campaign = DndCampaign.find(params[:id])
   end
 
+  def edit
+    @dnd_campaign = DndCampaign.find(params[:id])
+  end
+
+  def update
+    dnd_campaign = DndCampaign.find(params[:id])
+    dnd_campaign.update(dnd_campaign_params)
+    redirect_to "/dnd_campaigns/#{dnd_campaign.id}"
+  end
+
   private
     def dnd_campaign_params
-      params.permit(:name, :setting, :sessions, :active_campaign)
+      params.require(:dnd_campaign).permit(:name, :setting, :sessions, :active_campaign)
     end
 end

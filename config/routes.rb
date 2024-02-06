@@ -7,15 +7,19 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get "/dnd_campaigns", to: "dnd_campaigns#index"
 
+  # Parent Routes
+  get "/dnd_campaigns", to: "dnd_campaigns#index"
   get "/dnd_campaigns/new", to: "dnd_campaigns#new"
   post "/dnd_campaigns", to: "dnd_campaigns#create"
-  
   get "/dnd_campaigns/:id", to: "dnd_campaigns#show"
+  get "/dnd_campaigns/:id/edit", to: "dnd_campaigns#edit"
+  patch "/dnd_campaigns/:id", to: "dnd_campaigns#update"
 
+  # Child Routes
   get "/players", to: "players#index"
   get "/players/:id", to: "players#show"
 
+  # Parent's Children Routes
   get "/dnd_campaigns/:id/players", to: "dnd_campaign_players#index"
 end

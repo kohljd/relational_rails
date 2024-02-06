@@ -14,17 +14,18 @@ RSpec.describe "DnD Campaigns Edit Page" do
       it 'displays dnd campaign form with current campaign info' do
         save_and_open_page
         expect(page.find_field("Name").value).to eq(campaign1.name)
-        expect(page.find_field("Setting").value).to have_field(campaign1.setting)
-        expect(page.find_field("Sessions").value).to have_field(campaign1.sessions)
-        expect(page.find_field("active_campaign").value).to eq(campaign1.active_campaign)
+        expect(page.find_field("Setting").value).to eq(campaign1.setting)
+        expect(page.find_field("Sessions").value.to_i).to eq(campaign1.sessions)
+        expect(page.find_field("Active Campaign").value).to eq(campaign1.active_campaign.to_s)
       end
       
       it "updated form redirects to DnD Campaign " do
         fill_in "Sessions", with: 20
-        select "false", from: "active_campaign"
+        select "false", from: "Active Campaign"
         
         click_button "Submit Changes"
         expect(current_path).to eq("/dnd_campaigns/#{campaign1.id}")
+        save_and_open_page
         expect(page).to have_content(20)
         expect(page).to have_content("false")
       end

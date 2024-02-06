@@ -1,0 +1,14 @@
+<br>
+<br>
+<h1>Update: <%="#{@dnd_campaign.name}"%></h1>
+<%= form_with(model: @dnd_campaign, url: "/dnd_campaigns/#{@dnd_campaign.id}", method: :patch, data: {turbo: false}, local: true) do |form|%> 
+  <b><%=form.label :name%>:</b>
+  <%=form.text_field :name%><br><br>
+  <b><%=form.label :setting%>:</b>
+  <%=form.text_field :setting%><br><br>
+  <b><%=form.label :sessions, "Number of Sessions"%>:</b>
+  <%=form.number_field :sessions%><br><br>
+  <b><%=form.label :active_campaign, "Active Campaign"%>:</b>
+  <%=form.select(:active_campaign, %w[select true false])%><br><br>
+  <%=form.submit "Submit Changes"%>
+<%end%>
