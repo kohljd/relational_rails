@@ -48,6 +48,13 @@ RSpec.describe "Players Show Page", type: :feature do
         click_link "DnD Campaigns List"
         expect(current_path).to eq("/dnd_campaigns")
       end
+
+      it "player edit" do
+        expect(page).to have_link("Update #{player1.name}'s Info")
+
+        click_link "Update #{player1.name}'s Info"
+        expect(current_path).to eq("/players/#{player1.id}/edit")
+      end
     end
   end
 end
