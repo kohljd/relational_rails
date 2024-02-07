@@ -1,7 +1,7 @@
 <center><h1>DnD Campaigns</h1>
 
 <% @dnd_campaigns.each do |campaign| %>
-  <p><%=campaign.name%> - <%=campaign.created_at%></p>
+  <p><%=link_to "#{campaign.name}", "/dnd_campaigns/#{campaign.id}"%> - <%=campaign.created_at%></p>
 <%end%>
 <%= link_to "Create New DnD Campaign", "/dnd_campaigns/new" %>
 </center>
