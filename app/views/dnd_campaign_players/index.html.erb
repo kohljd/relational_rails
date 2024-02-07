@@ -4,7 +4,7 @@
 
   <%@players.each do |player|%>
     <div id="player_<%=player.id%>">
-    <h2><%=player.name%></h2>
+    <h2><%=link_to "#{player.name}", "/players/#{player.id}"%></h2>
     <p><b>Game Master:</b> <%= player.game_master%></p>
     <p><b>Character Name:</b> <%= player.character_name%></p>
     <p><b>Sessions Missed:</b> <%= player.sessions_missed%> </p>
