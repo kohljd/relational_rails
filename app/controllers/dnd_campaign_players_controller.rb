@@ -1,9 +1,11 @@
 class DndCampaignPlayersController < ApplicationController
   def index
     @dnd_campaign = DndCampaign.find(params[:id])
-    @players = @dnd_campaign.players
-    if params[:sort] == "player_name"
+    
+    if params[:sort] == "names_alphabetically" 
       @players = @dnd_campaign.sort_players_alphabetically
+    else
+      @players = @dnd_campaign.players
     end
   end
 
